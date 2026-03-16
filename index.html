@@ -102,28 +102,47 @@ h1 {
   font-style: normal;
 }
 
-/* ─── SECTIONS ─── */
-section {
-  padding: 60px 0;
-  border-bottom: 1px solid var(--border);
-}
-
 .section-label {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--accent);
   margin-bottom: 32px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  font-weight: 500;
+}
+
+.section-label::before {
+  content: '//';
+  color: var(--accent-dim);
+  font-size: 13px;
 }
 
 .section-label::after {
   content: '';
   flex: 1;
   height: 1px;
-  background: var(--border);
+  background: linear-gradient(to right, var(--accent-dim), transparent);
+}
+
+/* Section dividers — more visual separation */
+section {
+  padding: 72px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+section + section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--accent-dim);
 }
 
 /* ─── CAPABILITIES ─── */
@@ -138,12 +157,20 @@ section {
   border: 1px solid var(--border);
   padding: 24px;
   transition: border-color 0.3s, background 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
 }
 
 .cap-card:hover {
-  border-color: var(--accent-dim);
+  border-color: var(--accent);
   background: var(--accent-glow);
 }
+
+.cap-card:hover h3 { color: var(--accent); }
+
+.cap-card h3 { transition: color 0.2s; }
 
 .cap-icon {
   font-size: 11px;
@@ -434,38 +461,38 @@ footer {
   </header>
 
   <!-- CAPABILITIES -->
-  <section class="fade-in">
+  <section id="capabilities" class="fade-in">
     <div class="section-label">What I Build</div>
     <div class="cap-grid">
-      <div class="cap-card">
+      <a href="#ai-projects" class="cap-card">
         <div class="cap-icon">// 01</div>
         <h3>AI Integration</h3>
         <p>Multi-model pipelines, chatbot setup, Claude &amp; OpenAI API integration. Production systems, not demos.</p>
-      </div>
-      <div class="cap-card">
+      </a>
+      <a href="#ai-projects" class="cap-card">
         <div class="cap-icon">// 02</div>
         <h3>Workflow Automation</h3>
         <p>Zapier, Make, n8n — connecting the tools your business already uses. Eliminating manual work.</p>
-      </div>
-      <div class="cap-card">
+      </a>
+      <a href="#hardware-projects" class="cap-card">
         <div class="cap-icon">// 03</div>
         <h3>IoT &amp; Hardware</h3>
         <p>Raspberry Pi, Arduino, sensors, embedded systems. Bridging the physical and digital.</p>
-      </div>
-      <div class="cap-card">
+      </a>
+      <a href="#writing" class="cap-card">
         <div class="cap-icon">// 04</div>
-        <h3>Systems Architecture</h3>
-        <p>Designing systems that scale. Database architecture, API design, real-time data pipelines.</p>
-      </div>
+        <h3>Research &amp; Writing</h3>
+        <p>First-principles thinking. Neuroscience, physics, competitive analysis. Evidence over assumptions.</p>
+      </a>
     </div>
   </section>
 
   <!-- SELECTED WORK -->
-  <section class="fade-in">
+  <section id="projects" class="fade-in">
     <div class="section-label">Selected Work &mdash; 10 Projects</div>
 
     <!-- ═══ AI & SOFTWARE ═══ -->
-    <div class="category-header">AI &amp; Software Systems</div>
+    <div id="ai-projects" class="category-header">AI &amp; Software Systems</div>
 
     <div class="project" onclick="this.classList.toggle('open')">
       <div class="project-header">
@@ -587,7 +614,7 @@ footer {
     </div>
 
     <!-- ═══ HARDWARE & IoT ═══ -->
-    <div class="category-header">Hardware &amp; IoT</div>
+    <div id="hardware-projects" class="category-header">Hardware &amp; IoT</div>
 
     <div class="project" onclick="this.classList.toggle('open')">
       <div class="project-header">
@@ -761,7 +788,7 @@ footer {
   </section>
 
   <!-- WRITING & RESEARCH -->
-  <section class="fade-in">
+  <section id="writing" class="fade-in">
     <div class="section-label">Writing &amp; Research</div>
 
     <div class="writing-intro" style="margin-bottom: 32px; font-size: 13px; color: var(--text-dim); max-width: 680px;">
