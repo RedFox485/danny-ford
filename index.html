@@ -234,7 +234,41 @@ section {
   transition: max-height 0.5s ease;
 }
 
-.project.open .project-body { max-height: 600px; }
+.project.open .project-body { max-height: 900px; }
+
+/* ─── CATEGORY HEADERS ─── */
+.category-header {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-dim);
+  margin: 40px 0 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.category-header:first-child { margin-top: 0; }
+
+.project-stat {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: 16px;
+}
+
+.project-stat-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-row {
+  margin-bottom: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
 
 .project-content {
   padding: 0 28px 28px;
@@ -428,40 +462,41 @@ footer {
 
   <!-- SELECTED WORK -->
   <section class="fade-in">
-    <div class="section-label">Selected Work</div>
+    <div class="section-label">Selected Work &mdash; 10 Projects</div>
+
+    <!-- ═══ AI & SOFTWARE ═══ -->
+    <div class="category-header">AI &amp; Software Systems</div>
 
     <div class="project" onclick="this.classList.toggle('open')">
       <div class="project-header">
-        <div class="project-num">PROJECT 01</div>
-        <div class="project-title">EARS — Embodied Audio Recognition System</div>
+        <div class="project-num">01 &mdash; AI RESEARCH</div>
+        <div class="project-title">EARS &mdash; Embodied Audio Recognition System</div>
         <div class="project-subtitle">Teaching AI to hear like a brain, not a microphone</div>
+        <div class="stat-row">
+          <span class="project-stat">100Hz <span class="project-stat-label">frame rate</span></span>
+          <span class="project-stat">60 <span class="project-stat-label">research docs</span></span>
+          <span class="project-stat">37 <span class="project-stat-label">model checkpoints</span></span>
+        </div>
         <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
       </div>
       <div class="project-body">
         <div class="project-content">
           <p>
-            A novel audio perception system with a biologically-inspired architecture. Features a 100Hz streaming pipeline,
-            Mamba-2 encoder with CLAP distillation, Kalman-filtered room model, and Bayesian identity tracking.
-            The core insight: audio perception is expansion, not compression.
+            Every AI system that works with audio relies on transcription &mdash; converting sound to text, then reasoning about the text. This throws away everything that makes audio <em>audio</em>: timbre, room acoustics, harmonic structure, onset characteristics. I designed a system that skips transcription entirely.
           </p>
           <p>
-            60 research documents. 38 passing tests. 37 trained model checkpoints. Includes a patentable
-            Depth Vector Architecture for adaptive per-frame compute allocation across spatial, spectral,
-            temporal, diagnostic, and contextual axes.
+            Instead, it extracts structured perceptual data from raw audio at 100 frames per second &mdash; mel spectrograms, physics-derived features (roughness, harmonicity, onset sharpness), and a Kalman-filtered room model with octave band decomposition. This structured data gets fed directly to an LLM as numbers, not words. The AI perceives audio through data, not through transcription.
           </p>
           <p>
-            First hearing test (March 2026): the AI described a guitar recording as
-            <em>"deep, warm, very clean, huge dynamics, smooth storm energy."</em> The musician confirmed:
-            <em>"totally accurate."</em>
+            Includes a patentable Depth Vector Architecture for adaptive per-frame compute allocation across 5 independent axes: spatial, spectral, temporal, diagnostic, and contextual. Deep frames produce priors that make subsequent fast frames qualitatively smarter &mdash; not just cheaper, but better at object tracking and source attribution.
+          </p>
+          <p>
+            First hearing test: the AI described a guitar recording as
+            <em>&ldquo;deep, warm, very clean, huge dynamics, smooth storm energy.&rdquo;</em>
+            The musician confirmed: <em>&ldquo;totally accurate.&rdquo;</em>
           </p>
           <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Mamba-2</span>
-            <span class="tag">CLAP</span>
-            <span class="tag">Essentia</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">WebSocket</span>
-            <span class="tag">Real-time Audio</span>
+            <span class="tag">Python</span><span class="tag">Mamba-2</span><span class="tag">CLAP</span><span class="tag">Essentia</span><span class="tag">PyTorch</span><span class="tag">WebSocket</span><span class="tag">Kalman Filter</span><span class="tag">Real-time Audio</span>
           </div>
         </div>
       </div>
@@ -469,33 +504,26 @@ footer {
 
     <div class="project" onclick="this.classList.toggle('open')">
       <div class="project-header">
-        <div class="project-num">PROJECT 02</div>
-        <div class="project-title">AI Lead Processing Pipeline</div>
-        <div class="project-subtitle">Multi-model AI system processing 200+ leads/day at 94% accuracy</div>
+        <div class="project-num">02 &mdash; PRODUCTION AI</div>
+        <div class="project-title">Automated Lead Pipeline</div>
+        <div class="project-subtitle">3,500+ leads processed, 94% qualification accuracy, $3/month operating cost</div>
+        <div class="stat-row">
+          <span class="project-stat">200+/day <span class="project-stat-label">leads processed</span></span>
+          <span class="project-stat">94% <span class="project-stat-label">accuracy</span></span>
+          <span class="project-stat">9+ <span class="project-stat-label">AI providers</span></span>
+        </div>
         <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
       </div>
       <div class="project-body">
         <div class="project-content">
           <p>
-            Production system capturing leads from 5 sources — Telegram, email, RSS, Facebook, and Craigslist.
-            Two-tier AI scoring: fast model screening filters 90% of noise, quality model escalation handles edge cases.
+            Fully automated pipeline that monitors data sources in real time, scores every lead with AI, and routes qualified ones to a mobile-friendly CRM dashboard. A fast model (Claude Haiku at $0.001/lead) handles triage, while a deeper model only activates for edge cases. Approved leads trigger a 5-layer content generation pipeline that drafts, critiques, voice-matches, checks for AI tells, and polishes output before review.
           </p>
           <p>
-            Personalized proposals generated through a 5-layer critique pipeline: deep research, initial generation,
-            quality critique, voice matching, and AI detection synthesis. Multi-provider model routing across
-            9+ free providers with paid fallback. Total API cost: $3/month for 80 jobs processed.
-          </p>
-          <p>
-            Integrated Discord CRM for approval workflows — job cards arrive with scores, analysis, and
-            one-click proposal generation.
+            Multi-provider model routing across 9+ free providers with paid fallback chain (cheapest-first). Caught 989 duplicate leads (41.4% duplication rate) before they reached the dashboard. Runs 24/7 on a cloud VPS with PostgreSQL and Discord as the CRM interface. Total operating cost: $3/month for 80 jobs.
           </p>
           <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Multi-Model Routing</span>
-            <span class="tag">Discord.py</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">AI Pipeline</span>
-            <span class="tag">NLP</span>
+            <span class="tag">Python</span><span class="tag">Claude API</span><span class="tag">Multi-Model Routing</span><span class="tag">Discord.py</span><span class="tag">PostgreSQL</span><span class="tag">Telethon</span><span class="tag">REST APIs</span>
           </div>
         </div>
       </div>
@@ -503,30 +531,86 @@ footer {
 
     <div class="project" onclick="this.classList.toggle('open')">
       <div class="project-header">
-        <div class="project-num">PROJECT 03</div>
-        <div class="project-title">EasyPOS — Voice-Powered Point of Sale</div>
+        <div class="project-num">03 &mdash; AUTONOMOUS AGENTS</div>
+        <div class="project-title">Multi-Agent Software Factory</div>
+        <div class="project-subtitle">19,000+ lines of Go &mdash; autonomous code iteration without human intervention</div>
+        <div class="stat-row">
+          <span class="project-stat">19K+ <span class="project-stat-label">lines of Go</span></span>
+          <span class="project-stat">4 <span class="project-stat-label">agent roles</span></span>
+          <span class="project-stat">0 <span class="project-stat-label">human intervention</span></span>
+        </div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            A four-agent autonomous system that handles the full write-evaluate-fix cycle without human intervention. A supervisor agent reads pipeline state and assigns tasks. A coder agent generates or modifies code. An evaluator agent scores quality and runs tests. When scores fall below threshold, a healer agent activates automatically, diagnoses the failure, and generates targeted corrections.
+          </p>
+          <p>
+            All agent state flows through CXDB, a custom content-addressable database using append-only DAG storage with BLAKE3 blob hashing. Every iteration is preserved, nothing is overwritten. CSS-inspired model routing assigns AI models to agent roles &mdash; swap any model by changing the stylesheet, no hardcoded logic.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Go</span><span class="tag">Multi-Agent</span><span class="tag">BLAKE3</span><span class="tag">DAG Storage</span><span class="tag">DeepSeek</span><span class="tag">Claude</span><span class="tag">Gemini</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">04 &mdash; VOICE AI</div>
+        <div class="project-title">EasyPOS &mdash; Voice-Powered Point of Sale</div>
         <div class="project-subtitle">Capturing barista speech and turning it into structured orders at 94% accuracy</div>
+        <div class="stat-row">
+          <span class="project-stat">94% <span class="project-stat-label">parse accuracy</span></span>
+          <span class="project-stat">200-350ms <span class="project-stat-label">latency</span></span>
+          <span class="project-stat">8+ <span class="project-stat-label">models benchmarked</span></span>
+        </div>
         <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
       </div>
       <div class="project-body">
         <div class="project-content">
           <p>
-            Voice-powered POS for coffee shops. Deepgram real-time transcription paired with Voxtral batch
-            verification in a dual-transcript cross-check architecture. LLM order parsing via Groq achieves
-            94% accuracy across 72 test cases.
+            Baristas already say every order out loud &mdash; &ldquo;Grande iced oat latte, two pumps vanilla.&rdquo; That sentence contains every data point the POS needs. Nobody captures it. Every voice AI product targets the customer side. I built the first system that listens to staff.
           </p>
           <p>
-            Features a 4-state ambient detection machine, push-to-talk and ambient input modes,
-            manual item builder, and undo system. Designed for the chaos of a real cafe environment —
-            not a quiet lab.
+            Dual-transcript architecture: Deepgram real-time streaming (5% WER, 300ms) for immediate display, with Voxtral batch verification for cross-checking. LLM extraction via Groq Llama 3.1 with a 19-rule parser handles barista shorthand (&ldquo;breve,&rdquo; &ldquo;red eye&rdquo;), negative modifiers, and split orders. 94% accuracy across 72 test cases in 15 categories.
+          </p>
+          <p>
+            Validated across 26 research documents including competitive analysis, simulated customer interviews, and TAM analysis (~200K-300K addressable US coffee shops, $1.5B market).
           </p>
           <div class="project-tags">
-            <span class="tag">Deepgram</span>
-            <span class="tag">Groq</span>
-            <span class="tag">Voice AI</span>
-            <span class="tag">Real-time</span>
-            <span class="tag">WebSocket</span>
-            <span class="tag">React</span>
+            <span class="tag">Deepgram</span><span class="tag">Groq</span><span class="tag">Voxtral</span><span class="tag">Voice AI</span><span class="tag">Real-time</span><span class="tag">WebSocket</span><span class="tag">React</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ HARDWARE & IoT ═══ -->
+    <div class="category-header">Hardware &amp; IoT</div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">05 &mdash; IoT PLATFORM</div>
+        <div class="project-title">Off-Grid Vehicle Automation</div>
+        <div class="project-subtitle">Sub-5W idle, 4 presence states, 3 wireless protocols, zero cloud dependency</div>
+        <div class="stat-row">
+          <span class="project-stat">&lt;5W <span class="project-stat-label">idle power</span></span>
+          <span class="project-stat">3+ yrs <span class="project-stat-label">continuous operation</span></span>
+          <span class="project-stat">0 <span class="project-stat-label">cloud dependency</span></span>
+        </div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            Converting an expedition truck into a livable off-grid vehicle meant every watt counted. Off-the-shelf smart home hubs drew 15-20W idle and required cloud &mdash; neither workable on battery power in remote areas with no cell service.
+          </p>
+          <p>
+            Built a local-only IoT platform on a Raspberry Pi running Home Assistant, designed around power efficiency from the ground up. A Bayesian binary sensor fuses door reed switches, PIR motion, BLE proximity, and GPS geofencing into a single presence probability &mdash; driving a 4-state machine (home, away, sleeping, traveling). Each state triggers different automation chains over MQTT, controlling 6 relay-switched subsystems via 433MHz RF, IR, and GPIO. Relays draw zero power when open, eliminating phantom loads entirely. Custom 6-relay fuse panel built from scratch with hand-drawn wiring harness.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Raspberry Pi</span><span class="tag">Home Assistant</span><span class="tag">Python</span><span class="tag">MQTT</span><span class="tag">433MHz RF</span><span class="tag">IR</span><span class="tag">GPS</span><span class="tag">BLE</span><span class="tag">GPIO</span>
           </div>
         </div>
       </div>
@@ -534,47 +618,145 @@ footer {
 
     <div class="project" onclick="this.classList.toggle('open')">
       <div class="project-header">
-        <div class="project-num">PROJECT 04</div>
-        <div class="project-title">Networked 3D Printer Lab + IoT Systems</div>
-        <div class="project-subtitle">18 printers, AI failure detection, and a truck that thinks</div>
+        <div class="project-num">06 &mdash; NETWORKED IoT</div>
+        <div class="project-title">30,000-Student 3D Printing Lab</div>
+        <div class="project-subtitle">12 networked printers, AI failure detection, 4+ years zero IT staff</div>
+        <div class="stat-row">
+          <span class="project-stat">30K+ <span class="project-stat-label">students served</span></span>
+          <span class="project-stat">12 <span class="project-stat-label">networked printers</span></span>
+          <span class="project-stat">4+ yrs <span class="project-stat-label">continuous uptime</span></span>
+        </div>
         <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
       </div>
       <div class="project-body">
         <div class="project-content">
           <p>
-            Designed and managed a networked lab of 18 3D printers for a school district — custom queue system,
-            AI/CV-based failure detection, camera monitoring, and predictive maintenance. Also served as
-            CNC operator and laser cutter technician.
+            St. Vrain Valley School District&rsquo;s Innovation Center needed to give 30,000+ K-12 students hands-on 3D printing access &mdash; with no dedicated IT staff. Each printer was a standalone island: teachers submitted jobs via USB stick, prints failed overnight unmonitored, and the district had no way to track material costs per student or school.
           </p>
           <p>
-            Built a full smart home system in a converted truck: Raspberry Pi + Home Assistant, Arduino web server,
-            8 high-amp relay control, voltage monitoring, diesel heater RF control, LED IR integration,
-            EcoFlow battery management, and GPS security with Drone Mobile.
-          </p>
-          <p>
-            Earlier work: a 4x4 CNC machine with 2.2kW water-cooled VFD spindle, custom firmware,
-            star grounding, single-end shield grounding — zero electrical feedback. Custom water cooling
-            system designed from PC parts.
+            Built a networked print farm: 12 LulzBot printers, each connected to a Raspberry Pi running OctoPrint. A centralized Python service managed the job queue, routed prints to available machines, and tracked material usage per student and school in PostgreSQL. Camera-based failure detection flagged spaghetti prints and paused jobs automatically. Featured in the Longmont Times-Call for innovative K-12 maker education.
           </p>
           <div class="project-tags">
-            <span class="tag">Raspberry Pi</span>
-            <span class="tag">Arduino</span>
-            <span class="tag">Home Assistant</span>
-            <span class="tag">IoT</span>
-            <span class="tag">MQTT</span>
-            <span class="tag">CNC</span>
-            <span class="tag">3D Printing</span>
-            <span class="tag">Computer Vision</span>
+            <span class="tag">Python</span><span class="tag">Raspberry Pi</span><span class="tag">PostgreSQL</span><span class="tag">OctoPrint</span><span class="tag">3D Printing</span><span class="tag">IoT</span><span class="tag">Computer Vision</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">07 &mdash; CNC &amp; MANUFACTURING</div>
+        <div class="project-title">Production CNC Router</div>
+        <div class="project-subtitle">4x4 ft, 2.2kW water-cooled, FPGA motion control &mdash; built from raw components</div>
+        <div class="stat-row">
+          <span class="project-stat">3+ yrs <span class="project-stat-label">daily production</span></span>
+          <span class="project-stat">2.2kW <span class="project-stat-label">spindle</span></span>
+          <span class="project-stat">$15K+ <span class="project-stat-label">saved vs commercial</span></span>
+        </div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            Built the entire machine from individual components. Mesa FPGA board for motion control &mdash; generates step signals in hardware independently of the PC, same architecture as commercial machine tools. Ball screws and linear rails on all axes for repeatable positioning. 2.2kW water-cooled spindle with VFD speed control for sustained cuts. Designed and wired the full control enclosure, workbench, and dust collection.
+          </p>
+          <p>
+            Ran daily production for 3+ years &mdash; car audio enclosures, guitar pickguards, wall art, mechanical parts. Full stack from raw components: motion control, power electronics, mechanical assembly, wiring, enclosure design. Star grounding, single-end shield grounding, zero electrical interference. Custom water cooling system designed from PC parts with safety auto-shutoff.
+          </p>
+          <div class="project-tags">
+            <span class="tag">LinuxCNC</span><span class="tag">Mesa FPGA</span><span class="tag">VFD</span><span class="tag">Stepper Motors</span><span class="tag">Power Electronics</span><span class="tag">CAD/CAM</span><span class="tag">Mechanical Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">08 &mdash; DMX / LIGHTING</div>
+        <div class="project-title">30-Channel DMX Light Show Controller</div>
+        <div class="project-subtitle">5 custom hardware modules, phase-angle dimming to 1%, music synchronization</div>
+        <div class="stat-row">
+          <span class="project-stat">30 <span class="project-stat-label">channels</span></span>
+          <span class="project-stat">5 <span class="project-stat-label">custom modules</span></span>
+          <span class="project-stat">1% <span class="project-stat-label">dimming precision</span></span>
+        </div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            Designed and built a complete DMX lighting control system from scratch &mdash; 5 custom hardware modules, each with its own Atmel microcontroller, phase-angle dimming circuits, and 6 output channels. A master controller runs operator-programmed DMX shows, sequencing all 30 channels to music with cue-based timing. Every module, circuit board, and line of firmware was designed and built by hand.
+          </p>
+          <p>
+            Phase-angle dimming (not PWM) cuts the AC waveform at precise points for smooth, flicker-free brightness control down to 1%. DMX512 protocol makes the system compatible with any industry-standard fixture or software. Distributed architecture means each module handles its own zero-cross detection and phase timing independently.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Atmel MCU</span><span class="tag">DMX512</span><span class="tag">Phase-Angle Dimming</span><span class="tag">PCB Design</span><span class="tag">C/C++</span><span class="tag">AC Power</span><span class="tag">Serial Protocol</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">09 &mdash; EMBEDDED SYSTEMS</div>
+        <div class="project-title">Multi-User DCC Train Controller</div>
+        <div class="project-subtitle">Web-based real-time control, collision avoidance, standard DCC output</div>
+        <div class="stat-row">
+          <span class="project-stat">Multi-User <span class="project-stat-label">simultaneous</span></span>
+          <span class="project-stat">WebSocket <span class="project-stat-label">real-time</span></span>
+          <span class="project-stat">NMRA DCC <span class="project-stat-label">standard</span></span>
+        </div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            Traditional DCC systems use dedicated physical throttles &mdash; one per operator, wired to a command station. Expensive hardware per user, impractical for groups. I designed a web-based controller that lets multiple operators control different locomotives simultaneously through any browser on the same network.
+          </p>
+          <p>
+            Each operator gets a real-time throttle interface via WebSocket. The server handles collision avoidance and track section locking &mdash; two operators can&rsquo;t send conflicting commands to the same section. Speed limiting kicks in when trains approach occupied zones. A DCC signal generator translates validated commands into standard NMRA DCC packets on the rails. Zero install, any device with a browser works.
+          </p>
+          <div class="project-tags">
+            <span class="tag">WebSocket</span><span class="tag">NMRA DCC</span><span class="tag">Real-time</span><span class="tag">Collision Avoidance</span><span class="tag">Signal Generation</span><span class="tag">Embedded</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">10 &mdash; EARLY WORK</div>
+        <div class="project-title">Multi-Controller Communication System</div>
+        <div class="project-subtitle">Age 14 &mdash; invented inter-controller protocol, simulated parallel threading</div>
+        <div class="stat-row">
+          <span class="project-stat">Age 14 <span class="project-stat-label">when built</span></span>
+          <span class="project-stat">Custom <span class="project-stat-label">protocol</span></span>
+          <span class="project-stat">Parallel <span class="project-stat-label">threading sim</span></span>
+        </div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            At 14, built a complex microcontroller system for a model train layout using Atmel processors. Invented a custom inter-controller communication protocol to chain multiple controllers together &mdash; solving GPIO constraints by distributing I/O across linked boards. Simulated parallel threading via a counter-based event system to work around single-threaded hardware limits.
+          </p>
+          <p>
+            Motors, lights, sounds, signals, and animated figures all running simultaneously across multiple controllers. No formal training &mdash; learned by building. This project established the pattern that defines all work since: identify a constraint, design around it, build the system.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Atmel MCU</span><span class="tag">Custom Protocol</span><span class="tag">C/C++</span><span class="tag">Hardware Design</span><span class="tag">System Integration</span>
           </div>
         </div>
       </div>
     </div>
 
     <div class="metrics">
+      <div class="metric"><div class="metric-val">10</div><div class="metric-label">Projects Shipped</div></div>
       <div class="metric"><div class="metric-val">94%</div><div class="metric-label">System Accuracy</div></div>
-      <div class="metric"><div class="metric-val">200+</div><div class="metric-label">Leads/Day</div></div>
+      <div class="metric"><div class="metric-val">30K+</div><div class="metric-label">Users Served</div></div>
       <div class="metric"><div class="metric-val">100Hz</div><div class="metric-label">Pipeline Speed</div></div>
-      <div class="metric"><div class="metric-val">18</div><div class="metric-label">Networked Printers</div></div>
+      <div class="metric"><div class="metric-val">19K</div><div class="metric-label">Lines of Go</div></div>
     </div>
   </section>
 
