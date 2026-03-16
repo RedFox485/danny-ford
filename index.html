@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel Ford — AI Systems Architect</title>
+<meta name="description" content="AI integration, workflow automation, IoT, and systems architecture. I design and deliver automation systems that solve real problems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0c;
+  --bg-raised: #111114;
+  --bg-card: #16161a;
+  --border: #2a2a30;
+  --border-subtle: #1e1e24;
+  --text: #c8c8cc;
+  --text-dim: #6e6e78;
+  --text-bright: #e8e8ec;
+  --accent: #4fd1c5;
+  --accent-dim: #2a7a72;
+  --accent-glow: rgba(79, 209, 197, 0.08);
+  --tag-bg: #1a2420;
+  --tag-text: #4fd1c5;
+  --mono: 'IBM Plex Mono', 'SF Mono', monospace;
+  --serif: 'Source Serif 4', Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--mono);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── HEADER ─── */
+header {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.1s forwards;
+}
+
+.header-desc {
+  font-size: 15px;
+  color: var(--text-dim);
+  max-width: 600px;
+  line-height: 1.8;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.2s forwards;
+}
+
+.header-desc em {
+  color: var(--text);
+  font-style: normal;
+}
+
+/* ─── SECTIONS ─── */
+section {
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── CAPABILITIES ─── */
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.cap-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.cap-card:hover {
+  border-color: var(--accent-dim);
+  background: var(--accent-glow);
+}
+
+.cap-icon {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.cap-card h3 {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+}
+
+.cap-card p {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ─── PROJECTS ─── */
+.project {
+  margin-bottom: 40px;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  overflow: hidden;
+}
+
+.project:last-child { margin-bottom: 0; }
+
+.project-header {
+  padding: 28px 28px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.project-header:hover .project-title { color: var(--accent); }
+
+.project-num {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.project-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.3;
+  margin-bottom: 4px;
+  transition: color 0.2s;
+}
+
+.project-subtitle {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-style: italic;
+  font-family: var(--serif);
+  margin-bottom: 16px;
+}
+
+.project-toggle {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-toggle .arrow {
+  display: inline-block;
+  transition: transform 0.3s;
+  font-size: 9px;
+}
+
+.project.open .project-toggle .arrow { transform: rotate(90deg); }
+
+.project-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.project.open .project-body { max-height: 600px; }
+
+.project-content {
+  padding: 0 28px 28px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+.project-content p {
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 10.5px;
+  padding: 3px 10px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border: 1px solid var(--accent-dim);
+  letter-spacing: 0.5px;
+}
+
+/* ─── HOW I WORK ─── */
+.how-content {
+  display: grid;
+  grid-template-columns: 3px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.how-line {
+  background: var(--accent);
+  width: 2px;
+  height: 100%;
+  min-height: 100px;
+  opacity: 0.5;
+}
+
+.how-text {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+.how-text strong {
+  color: var(--text-bright);
+  font-weight: 600;
+}
+
+/* ─── METRICS ─── */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 32px;
+}
+
+.metric {
+  background: var(--bg-card);
+  padding: 20px;
+  text-align: center;
+}
+
+.metric-val {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -1px;
+}
+
+.metric-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 48px 0;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.footer-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--accent); }
+
+.footer-copy {
+  font-size: 11px;
+  color: var(--text-dim);
+  opacity: 0.5;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  header { padding: 48px 0 40px; }
+  section { padding: 40px 0; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .project-header { padding: 20px 20px 0; }
+  .project-content { padding: 0 20px 20px; padding-top: 20px; }
+  .metrics { grid-template-columns: repeat(2, 1fr); }
+  .footer-links { gap: 20px; }
+  .how-content { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-label">systems architect &amp; builder</div>
+    <h1>Daniel Ford</h1>
+    <p class="header-desc">
+      I design and deliver <em>automation systems</em> that solve real problems.
+      AI integration, workflow automation, IoT, and systems architecture —
+      from concept to working system, typically in 48 hours.
+    </p>
+  </header>
+
+  <!-- CAPABILITIES -->
+  <section class="fade-in">
+    <div class="section-label">What I Build</div>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">// 01</div>
+        <h3>AI Integration</h3>
+        <p>Multi-model pipelines, chatbot setup, Claude &amp; OpenAI API integration. Production systems, not demos.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">// 02</div>
+        <h3>Workflow Automation</h3>
+        <p>Zapier, Make, n8n — connecting the tools your business already uses. Eliminating manual work.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">// 03</div>
+        <h3>IoT &amp; Hardware</h3>
+        <p>Raspberry Pi, Arduino, sensors, embedded systems. Bridging the physical and digital.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">// 04</div>
+        <h3>Systems Architecture</h3>
+        <p>Designing systems that scale. Database architecture, API design, real-time data pipelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section class="fade-in">
+    <div class="section-label">Selected Work</div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">PROJECT 01</div>
+        <div class="project-title">EARS — Embodied Audio Recognition System</div>
+        <div class="project-subtitle">Teaching AI to hear like a brain, not a microphone</div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            A novel audio perception system with a biologically-inspired architecture. Features a 100Hz streaming pipeline,
+            Mamba-2 encoder with CLAP distillation, Kalman-filtered room model, and Bayesian identity tracking.
+            The core insight: audio perception is expansion, not compression.
+          </p>
+          <p>
+            60 research documents. 38 passing tests. 37 trained model checkpoints. Includes a patentable
+            Depth Vector Architecture for adaptive per-frame compute allocation across spatial, spectral,
+            temporal, diagnostic, and contextual axes.
+          </p>
+          <p>
+            First hearing test (March 2026): the AI described a guitar recording as
+            <em>"deep, warm, very clean, huge dynamics, smooth storm energy."</em> The musician confirmed:
+            <em>"totally accurate."</em>
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Mamba-2</span>
+            <span class="tag">CLAP</span>
+            <span class="tag">Essentia</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">WebSocket</span>
+            <span class="tag">Real-time Audio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">PROJECT 02</div>
+        <div class="project-title">AI Lead Processing Pipeline</div>
+        <div class="project-subtitle">Multi-model AI system processing 200+ leads/day at 94% accuracy</div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            Production system capturing leads from 5 sources — Telegram, email, RSS, Facebook, and Craigslist.
+            Two-tier AI scoring: fast model screening filters 90% of noise, quality model escalation handles edge cases.
+          </p>
+          <p>
+            Personalized proposals generated through a 5-layer critique pipeline: deep research, initial generation,
+            quality critique, voice matching, and AI detection synthesis. Multi-provider model routing across
+            9+ free providers with paid fallback. Total API cost: $3/month for 80 jobs processed.
+          </p>
+          <p>
+            Integrated Discord CRM for approval workflows — job cards arrive with scores, analysis, and
+            one-click proposal generation.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Multi-Model Routing</span>
+            <span class="tag">Discord.py</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">AI Pipeline</span>
+            <span class="tag">NLP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">PROJECT 03</div>
+        <div class="project-title">EasyPOS — Voice-Powered Point of Sale</div>
+        <div class="project-subtitle">Capturing barista speech and turning it into structured orders at 94% accuracy</div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            Voice-powered POS for coffee shops. Deepgram real-time transcription paired with Voxtral batch
+            verification in a dual-transcript cross-check architecture. LLM order parsing via Groq achieves
+            94% accuracy across 72 test cases.
+          </p>
+          <p>
+            Features a 4-state ambient detection machine, push-to-talk and ambient input modes,
+            manual item builder, and undo system. Designed for the chaos of a real cafe environment —
+            not a quiet lab.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Deepgram</span>
+            <span class="tag">Groq</span>
+            <span class="tag">Voice AI</span>
+            <span class="tag">Real-time</span>
+            <span class="tag">WebSocket</span>
+            <span class="tag">React</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">PROJECT 04</div>
+        <div class="project-title">Networked 3D Printer Lab + IoT Systems</div>
+        <div class="project-subtitle">18 printers, AI failure detection, and a truck that thinks</div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read more</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            Designed and managed a networked lab of 18 3D printers for a school district — custom queue system,
+            AI/CV-based failure detection, camera monitoring, and predictive maintenance. Also served as
+            CNC operator and laser cutter technician.
+          </p>
+          <p>
+            Built a full smart home system in a converted truck: Raspberry Pi + Home Assistant, Arduino web server,
+            8 high-amp relay control, voltage monitoring, diesel heater RF control, LED IR integration,
+            EcoFlow battery management, and GPS security with Drone Mobile.
+          </p>
+          <p>
+            Earlier work: a 4x4 CNC machine with 2.2kW water-cooled VFD spindle, custom firmware,
+            star grounding, single-end shield grounding — zero electrical feedback. Custom water cooling
+            system designed from PC parts.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Raspberry Pi</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">Home Assistant</span>
+            <span class="tag">IoT</span>
+            <span class="tag">MQTT</span>
+            <span class="tag">CNC</span>
+            <span class="tag">3D Printing</span>
+            <span class="tag">Computer Vision</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">94%</div><div class="metric-label">System Accuracy</div></div>
+      <div class="metric"><div class="metric-val">200+</div><div class="metric-label">Leads/Day</div></div>
+      <div class="metric"><div class="metric-val">100Hz</div><div class="metric-label">Pipeline Speed</div></div>
+      <div class="metric"><div class="metric-val">18</div><div class="metric-label">Networked Printers</div></div>
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section class="fade-in">
+    <div class="section-label">How I Work</div>
+    <div class="how-content">
+      <div class="how-line"></div>
+      <div class="how-text">
+        <strong>I'm a systems architect, not a developer.</strong> I design the solution, then direct AI tools
+        to build it — typically 2&ndash;3x faster than traditional development. You get a working system,
+        not a code repository.
+        <br><br>
+        Every project starts with understanding your actual problem, not jumping to implementation.
+        First milestone delivered in 48 hours so you can evaluate before committing.
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/danny-ford477" target="_blank">LinkedIn</a>
+      <a href="https://github.com/RedFox485" target="_blank">GitHub</a>
+      <a href="mailto:dannyfordsystems@gmail.com">Email</a>
+    </div>
+    <div class="footer-copy">Daniel Ford &middot; Denver, CO &middot; 2026</div>
+  </footer>
+
+</div>
+
+<script>
+// Intersection observer for fade-in animations
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
