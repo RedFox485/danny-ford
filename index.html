@@ -429,7 +429,7 @@ footer {
     <p class="header-desc">
       I design and deliver <em>automation systems</em> that solve real problems.
       AI integration, workflow automation, IoT, and systems architecture —
-      from concept to working system, typically in 48 hours.
+      from concept to working system, with a focus on fast, milestone-based delivery.
     </p>
   </header>
 
@@ -760,6 +760,100 @@ footer {
     </div>
   </section>
 
+  <!-- WRITING & RESEARCH -->
+  <section class="fade-in">
+    <div class="section-label">Writing &amp; Research</div>
+
+    <div class="writing-intro" style="margin-bottom: 32px; font-size: 13px; color: var(--text-dim); max-width: 680px;">
+      Excerpts from ongoing research. These reflect how I think about problems &mdash; starting with first principles, questioning assumptions, and building from evidence.
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">ESSAY</div>
+        <div class="project-title">Your Brain Has Never Heard a Sound</div>
+        <div class="project-subtitle">Neuroscience, prediction engines, and why perception is construction</div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read excerpt</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            Right now, you're probably in a room with some ambient noise. Maybe a fan, a refrigerator hum, traffic outside. You &ldquo;hear&rdquo; these things. But your brain has never &mdash; not once in your entire life &mdash; experienced a sound wave.
+          </p>
+          <p>
+            What your brain gets is electrical spikes. About 30,000 nerve fibers per ear, firing in patterns that encode frequency, amplitude, and timing. That&rsquo;s it. Binary events &mdash; fire or don&rsquo;t fire &mdash; at roughly 18 million spikes per second. From this river of electrical noise, your brain constructs the rich, detailed, emotionally textured experience you call &ldquo;hearing.&rdquo;
+          </p>
+          <p>
+            Here&rsquo;s the number that rewired how I think about perception: in the visual system, only 20% of the neural connections to primary visual cortex come from the eyes. Eighty percent come from other brain areas &mdash; memory, prediction, association. The auditory system follows the same design. The descending connections &mdash; signals flowing FROM the brain TOWARD the ears &mdash; <strong>outnumber</strong> the ascending connections carrying actual sound information.
+          </p>
+          <p>
+            Your brain sends more data down to shape what it will hear than your ears send up to report what they detected. The system is architecturally optimized for prediction, not reception. Your brain is not primarily a sensor. It&rsquo;s primarily a prediction engine that occasionally checks its predictions against incoming data.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Neuroscience</span><span class="tag">Perception</span><span class="tag">Prediction</span><span class="tag">Audio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">ESSAY</div>
+        <div class="project-title">The Hidden Math That Makes Music Beautiful</div>
+        <div class="project-subtitle">Frequency ratios, harmonic overlap, and why consonance isn't cultural</div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read excerpt</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            I&rsquo;ve been playing guitar for fourteen years. Last week, I pointed a signal processing system at my guitar and watched it analyze the raw frequency data &mdash; no music theory, no labels, no training on what sounds &ldquo;good.&rdquo; Just the physics of vibrating strings and air, decomposed into numbers.
+          </p>
+          <p>
+            The system captured 3,269 observations of spectral peak frequency ratios. The most common ratios that emerged: 1.50 (the perfect fifth, 267 occurrences), 1.96 (the octave, 266), 1.38 (the perfect fourth, 220), 1.26 (the major third, 165). These are the intervals that define Western harmony &mdash; and they emerged naturally from the raw physics of a guitar string vibrating in a room.
+          </p>
+          <p>
+            When two notes &ldquo;sound right&rdquo; together, it&rsquo;s because their harmonic series overlap. Play an A (220 Hz) and an E (330 Hz) together &mdash; they share harmonics at 660 Hz and 1320 Hz. Those overlapping frequencies reinforce each other instead of fighting. That&rsquo;s consonance &mdash; not a cultural preference, not a learned behavior, but a physical reality of how waves interact.
+          </p>
+          <p>
+            Pythagoras figured this out 2,500 years ago with strings and hammers. What surprised me is that the same math fell out of a signal processing pipeline running on a laptop, with zero music theory programmed in.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Music Theory</span><span class="tag">Physics</span><span class="tag">DSP</span><span class="tag">Signal Processing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" onclick="this.classList.toggle('open')">
+      <div class="project-header">
+        <div class="project-num">ESSAY</div>
+        <div class="project-title">Why Every AI Audio System Is Solving the Wrong Problem</div>
+        <div class="project-subtitle">Nine major systems surveyed &mdash; all consume audio instead of perceiving it</div>
+        <div class="project-toggle"><span class="arrow">&#9654;</span> Read excerpt</div>
+      </div>
+      <div class="project-body">
+        <div class="project-content">
+          <p>
+            I surveyed every major audio-AI system released in the last three years: AudioPaLM, SALMONN, Qwen2-Audio, Audio Flamingo, Audio-Reasoner, the OpenAI and Gemini real-time APIs, SAR-LM, and Audio-Maestro. Billions of dollars in aggregate R&D. They all have the same fundamental limitation.
+          </p>
+          <p>
+            They don&rsquo;t perceive audio. They consume it. Take a clip, compress it into a representation, extract meaning, move on. The audio goes in one end and labels come out the other. Speech-to-text. Genre classification. Audio question answering.
+          </p>
+          <p>
+            Think about how you hear. You don&rsquo;t process audio in clips. There&rsquo;s a continuous stream of sound hitting your eardrums right now &mdash; room tone, your own breathing, the hum of electronics &mdash; and your brain is monitoring ALL of it, every moment. When a door slams, you don&rsquo;t need to &ldquo;process a clip&rdquo; to react. Your brain has been maintaining a model of the auditory scene, and the slam violates that model. The reaction comes from the violation, not from analyzing the slam itself.
+          </p>
+          <p>
+            Three things separate hearing from audio processing: <strong>State</strong> (your brain maintains a running model of every sound source), <strong>Prediction</strong> (descending neural connections outnumber ascending ones &mdash; your brain predicts what it expects to hear), and <strong>Objects</strong> (you perceive a guitar and a voice as separate persistent entities, not a spectrogram of mixed frequencies).
+          </p>
+          <div class="project-tags">
+            <span class="tag">AI Research</span><span class="tag">Competitive Analysis</span><span class="tag">Audio Perception</span><span class="tag">Systems Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
   <!-- HOW I WORK -->
   <section class="fade-in">
     <div class="section-label">How I Work</div>
@@ -767,11 +861,10 @@ footer {
       <div class="how-line"></div>
       <div class="how-text">
         <strong>I'm a systems architect, not a developer.</strong> I design the solution, then direct AI tools
-        to build it — typically 2&ndash;3x faster than traditional development. You get a working system,
-        not a code repository.
+        to build it. You get a working system, not a code repository.
         <br><br>
         Every project starts with understanding your actual problem, not jumping to implementation.
-        First milestone delivered in 48 hours so you can evaluate before committing.
+        Milestone-based delivery so you can evaluate quality before committing to the full scope.
       </div>
     </div>
   </section>
